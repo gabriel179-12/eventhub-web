@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getCurrentUser, login, logout } from '../services/auth'
 import type { User } from '../services/auth'
+import HomePage from './HomePage'
 
 type LoginPageProps = {
   onGoToRegister: () => void
@@ -100,26 +101,12 @@ export default function LoginPage({
 
   if (user) {
     return (
-      <main className="login-page">
-        <section className="login-card" aria-labelledby="welcome-title">
-          <h1 id="welcome-title">Olá, {user.name}!</h1>
-          <p>Você está conectado como {user.email}.</p>
-
-          {error && (
-            <p className="login-error" role="alert">
-              {error}
-            </p>
-          )}
-
-          <button
-            type="button"
-            disabled={busy}
-            onClick={() => void handleLogout()}
-          >
-            {busy ? 'Saindo...' : 'Sair da conta'}
-          </button>
-        </section>
-      </main>
+        <HomePage
+            user={user}
+            onLogout={() => void handleLogout()}
+            busy={busy}
+            logoutError={error}
+        />
     )
   }
 

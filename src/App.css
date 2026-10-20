@@ -116,3 +116,109 @@
   background-color: transparent;
   color: #bfdbfe;
 }
+.home-page {
+  min-height: 100svh;
+}
+
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 24px;
+  background-color: #1f2937;
+  border-bottom: 1px solid #374151;
+}
+
+.home-brand {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.home-account {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.home-header button {
+  min-height: 44px;
+  padding: 10px 16px;
+  color: #ffffff;
+  background-color: #2563eb;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.home-header button:hover {
+  background-color: #1d4ed8;
+}
+
+.home-header button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.home-header button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.home-content {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.home-content h1 {
+  margin: 0 0 12px;
+  font-size: 32px;
+}
+
+.home-intro {
+  margin: 0 0 32px;
+  color: #d1d5db;
+  line-height: 1.5;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 24px;
+}
+
+.event-card {
+  padding: 24px;
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 12px;
+}
+
+.event-card h2 {
+  margin: 0 0 16px;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.event-card time {
+  display: block;
+  margin-bottom: 20px;
+  color: #93c5fd;
+}
+
+.event-card p {
+  margin: 8px 0 0;
+  color: #d1d5db;
+  line-height: 1.5;
+}
+
+.home-error {
+  padding: 12px;
+  color: #fecaca;
+  background-color: #450a0a;
+  border: 1px solid #f87171;
+  border-radius: 6px;
+}
