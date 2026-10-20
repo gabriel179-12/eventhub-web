@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { getPublicEvents } from '../services/api'
 import type { User } from '../services/auth'
 import type { PublicEvent } from '../types/event'
+import EventDetailsPage from './EventDetailsPage'
 
 type HomePageProps = {
     user: User
@@ -24,6 +25,7 @@ export default function HomePage({
     const [events, setEvents] = useState<PublicEvent[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
+    const [selectedSlug, setSelectedSlug] = useState<string | null>(null)
 
     useEffect(() => {
         const controller = new AbortController()
@@ -55,6 +57,16 @@ export default function HomePage({
 
         return () => controller.abort()
     }, [])
+
+    if (selectedSlug) {
+        return (
+            <EventDetailsPage
+                key={selectedSlug}
+                slug={selectedSlug}
+                onBack={() => setSelectedSlug(null)}
+            />
+        )
+    }
 
     return (
         <div className='home-page'>
@@ -107,6 +119,14 @@ export default function HomePage({
                             <p>
                                 {event.city} — {event.state}
                             </p>
+                            <button
+                                type='button'
+                                className='event-details-button'
+                                onClick={() => setSelectedSlug(event.slug)}
+                                aria-label={`Ver detalhes de ${event.name}`}
+                            >
+                                Ver detalhes
+                            </button>
                         </article>
                     ))}
                 </div>
