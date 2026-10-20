@@ -92,3 +92,27 @@
 .login-field input:disabled {
   opacity: 0.65;
 }
+.field-error {
+  color: #fca5a5;
+  line-height: 1.4;
+}
+
+.login-field input[aria-invalid="true"] {
+  border-color: #f87171;
+}
+
+.login-card .auth-link {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 8px;
+  color: #93c5fd;
+  background-color: transparent;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.login-card .auth-link:hover {
+  background-color: transparent;
+  color: #bfdbfe;
+}
