@@ -58,6 +58,8 @@ export default function EventDetailsPage({
         return () => controller.abort()
     }, [slug])
 
+    const ticketType = event?.ticket_types[0]
+
     return (
         <main className='home-content'>
             <button type='button' className='back-button' onClick={onBack}>
@@ -113,32 +115,20 @@ export default function EventDetailsPage({
                         <p>CEP: {event.postal_code}</p>
                     </section>
 
-                    <section className='event-card' aria-labelledby='tickets-title'>
-                        <h2 id='tickets-title'>Tipos de ingressos</h2>
+                    <section className="event-card" aria-labelledby="ticket-title">
+                        <h2 id="ticket-title">Ingresso</h2>
 
-                        {event.ticket_types.length === 0 ? (
-                            <p>Nenhum tipo de ingresso disponível para venda no momento.</p>
-                        ): (
-                            <ul className='ticket-type'>
-                                {event.ticket_types.map((ticketType) => (
-                                    <li key={ticketType.id} className='ticket-type'>
-                                        <div>
-                                            <h3>{ticketType.name}</h3>
-                                            {ticketType.description && (
-                                                <p>{ticketType.description}</p>
-                                            )}
-                                        </div>
-
-                                        <strong>
-                                            {ticketType.price_in_cents === 0
-                                            ? 'Gratuito'
-                                            : priceFormatter.format(
-                                                ticketType.price_in_cents / 100,
-                                            )}feat(events): adiciona tela de detalhes do evento
-                                        </strong>
-                                    </li>
-                                ))}
-                            </ul>
+                        {ticketType ? (
+                            <>
+                            <p className="event-price">
+                                {ticketType.price_in_cents === 0
+                                ? 'Gratuito'
+                                : priceFormatter.format(ticketType.price_in_cents / 100)}
+                            </p>
+                            <p>Valor por pessoa.</p>
+                            </>
+                        ) : (
+                            <p>Ingressos indisponíveis no momento.</p>
                         )}
                     </section>
                 </div>
